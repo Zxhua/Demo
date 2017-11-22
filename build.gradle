@@ -30,18 +30,15 @@ android {
         }
     }
 }
-
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     androidTestCompile('com.android.support.test.espresso:espresso-core:3.0.1', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-
     //noinspection GradleCompatible
     compile 'com.android.support:appcompat-v7:26.1.0'
     testCompile 'junit:junit:4.12'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
-
     //引入dagger2
     compile 'com.google.dagger:dagger:2.11'
     //apt 'com.google.dagger:dagger-compiler:2.11'
@@ -49,16 +46,13 @@ dependencies {
     //java注解
     provided 'org.glassfish:javax.annotation:10.0-b28'
     compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
-
     // Lifecycles, LiveData 和 ViewModel
-    compile "android.arch.lifecycle:runtime:1.0.3"
-    compile "android.arch.lifecycle:extensions:1.0.0-rc1"
-    annotationProcessor "android.arch.lifecycle:compiler:1.0.0-rc1"
-
+    compile 'android.arch.lifecycle:runtime:1.0.3'
+    compile 'android.arch.lifecycle:extensions:1.0.0'
+    annotationProcessor "android.arch.lifecycle:compiler:1.0.0"
     // Room
-    compile "android.arch.persistence.room:runtime:1.0.0-rc1"
-    annotationProcessor "android.arch.persistence.room:compiler:1.0.0-rc1"
-
+    compile 'android.arch.persistence.room:runtime:1.0.0'
+    annotationProcessor "android.arch.persistence.room:compiler:1.0.0"
     //retrofit
     compile 'com.squareup.retrofit2:retrofit:2.3.0'
     compile 'com.squareup.retrofit2:converter-gson:2.3.0'
@@ -69,11 +63,11 @@ dependencies {
     compile 'com.trello.rxlifecycle2:rxlifecycle-android:2.1.0'
     compile 'com.jakewharton.rxbinding2:rxbinding:2.0.0'
     compile 'com.tbruyelle.rxpermissions2:rxpermissions:0.9.1@aar'
-
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.7.0'
     compile 'com.jakewharton:butterknife:8.7.0'
     compile 'org.greenrobot:eventbus:3.0.0'
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+//    implementation project(':process')
 }
 repositories {
     mavenCentral()

@@ -23,7 +23,12 @@ public final class ComponentFactory {
         return ActivityComponent.Initializer.init(daggerActivity,daggerApplication.getApplicationComponent());
     }
 
-    public static FragmentComonpent createFragmentComponent(final DaggerFragment fragment,final ActivityComponent activityComponent){
+    public static FragmentComonpent createFragmentComponent(final DaggerFragment fragment, final ActivityComponent activityComponent){
         return FragmentComonpent.Initializer.init(fragment,activityComponent);
+    }
+
+    static class PutClass{
+        public static String  A = "";
+
     }
 }

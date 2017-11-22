@@ -9,7 +9,6 @@ import javax.inject.Inject;
 
 import demo.zxhua.daggerdemo.R;
 import demo.zxhua.daggerdemo.core.base.BaseFragment;
-import demo.zxhua.daggerdemo.core.dagger.application.ForApplication;
 import demo.zxhua.daggerdemo.core.dagger.fragment.FragmentComonpent;
 import demo.zxhua.daggerdemo.core.dagger.viewmodelmodule.ViewModelFactory;
 import demo.zxhua.daggerdemo.databinding.FragmentRefreshEditBinding;
@@ -21,7 +20,6 @@ import demo.zxhua.daggerdemo.databinding.FragmentRefreshEditBinding;
 public class EditRefreshFragment extends BaseFragment<RefreshEditViewModel> {
 
     @Inject
-    @ForApplication
     ViewModelFactory viewModelFactory;
 
     private FragmentRefreshEditBinding fragmentRefreshEditBinding;

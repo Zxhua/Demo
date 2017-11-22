@@ -14,7 +14,6 @@ import javax.inject.Inject;
 import butterknife.BindView;
 import demo.zxhua.daggerdemo.R;
 import demo.zxhua.daggerdemo.core.base.BaseFragment;
-import demo.zxhua.daggerdemo.core.dagger.application.ForApplication;
 import demo.zxhua.daggerdemo.core.dagger.fragment.FragmentComonpent;
 import demo.zxhua.daggerdemo.core.dagger.viewmodelmodule.ViewModelFactory;
 import demo.zxhua.daggerdemo.ui.refreshedit.EditRefreshActivity;
@@ -33,7 +32,6 @@ public class LoginFragment extends BaseFragment<LoginViewModel> {
     private LoginViewModel loginViewModel;
 
     @Inject
-    @ForApplication
     ViewModelFactory viewModelFactory;
 
 
