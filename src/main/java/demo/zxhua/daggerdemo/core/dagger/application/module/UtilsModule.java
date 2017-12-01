@@ -6,6 +6,8 @@ import dagger.Module;
 import dagger.Provides;
 import demo.zxhua.daggerdemo.utils.ActivityUtils;
 import demo.zxhua.daggerdemo.utils.ActivityUtilsImpl;
+import demo.zxhua.daggerdemo.utils.ImageLoaderUtils;
+import demo.zxhua.daggerdemo.utils.ImageLoaderUtilsImpl;
 import demo.zxhua.daggerdemo.utils.TransformUtils;
 import demo.zxhua.daggerdemo.utils.TransformUtilsImpl;
 
@@ -27,10 +29,17 @@ public class UtilsModule {
         return new TransformUtilsImpl();
     }
 
+    @Provides
+    @Singleton
+    ImageLoaderUtils provideImageLoaderUtils() {
+        return new ImageLoaderUtilsImpl();
+    }
+
     public interface Exposes {
         ActivityUtils provideActivityUtils();
 
         TransformUtils provideTransformUtils();
 
+        ImageLoaderUtils provideImageLoaderUtils();
     }
 }

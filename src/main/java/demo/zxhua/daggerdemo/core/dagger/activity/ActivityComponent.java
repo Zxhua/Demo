@@ -14,6 +14,7 @@ import demo.zxhua.daggerdemo.core.dagger.application.ApplicationComponent;
                 ActivityMoudel.class
         })
 public interface ActivityComponent extends ActivityComponentEposes, ActivityComponentInject {
+
     final class Initializer {
         static public ActivityComponent init(final DaggerActivity activity, final ApplicationComponent applicationComponent) {
             return DaggerActivityComponent.builder()

@@ -18,6 +18,7 @@ import demo.zxhua.daggerdemo.core.dagger.application.module.VMModule;
         UtilsModule.class
 })
 public interface ApplicationComponent extends ApplicationComponentExposes, ApplicationComponentInject {
+
     final class Initializer {
         static public ApplicationComponent init(final DaggerApplication daggerApplication) {
             return DaggerApplicationComponent.builder()

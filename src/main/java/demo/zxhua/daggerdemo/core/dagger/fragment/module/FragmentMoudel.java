@@ -8,9 +8,9 @@ import demo.zxhua.daggerdemo.core.dagger.fragment.DaggerFragment;
  */
 @Module
 public class FragmentMoudel {
-
     private final DaggerFragment daggerFragment;
-    public FragmentMoudel(final DaggerFragment fragment){
-        daggerFragment =fragment;
+
+    public FragmentMoudel(final DaggerFragment fragment) {
+        daggerFragment = fragment;
     }
 }

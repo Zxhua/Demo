@@ -2,44 +2,45 @@ package demo.zxhua.daggerdemo.core.dagger.viewmodelmodule;
 
 import android.arch.lifecycle.ViewModel;
 import android.arch.lifecycle.ViewModelProvider;
-import android.content.Context;
+
+import java.util.Map;
 
 import javax.inject.Inject;
-
-import demo.zxhua.daggerdemo.core.dagger.application.DaggerApplication;
-import demo.zxhua.daggerdemo.ui.login.LoginViewModel;
-import demo.zxhua.daggerdemo.ui.refreshedit.RefreshEditViewModel;
+import javax.inject.Provider;
+import javax.inject.Singleton;
 
 /**
  * Created by Zxhua on 2017/9/8 0008.
  */
+@Singleton
 public class ViewModelFactory implements ViewModelProvider.Factory {
-    private static ViewModelFactory INSTANCE;
+
+    public Map<Class<? extends ViewModel>, Provider<ViewModel>> creators;
 
     @Inject
-    public DaggerApplication daggerApplication;
-    @Inject
-    public Context context;
-
-    public static ViewModelFactory getInstance() {
-        if (INSTANCE == null) {
-            INSTANCE = new ViewModelFactory();
-        }
-        return INSTANCE;
+    public ViewModelFactory(Map<Class<? extends ViewModel>, Provider<ViewModel>> creators) {
+        this.creators = creators;
     }
 
-    private ViewModelFactory() {
-    }
 
     @Override
     public <T extends ViewModel> T create(Class<T> modelClass) {
-        if (modelClass.isAssignableFrom(LoginViewModel.class)) {
-            //noinspection unchecked
-            return (T) new LoginViewModel(daggerApplication);
+        Provider<? extends ViewModel> creator = creators.get(modelClass);
+        if (creator == null) {
+            for (Map.Entry<Class<? extends ViewModel>, Provider<ViewModel>> entry : creators.entrySet()) {
+                if (modelClass.isAssignableFrom(entry.getKey())) {
+                    creator = entry.getValue();
+                    break;
+                }
+            }
         }
-        if (modelClass.isAssignableFrom(RefreshEditViewModel.class)) {
-            return (T) new RefreshEditViewModel(daggerApplication);
+        if (creator == null) {
+            throw new IllegalArgumentException("unknown model class" + modelClass);
         }
-        throw new IllegalArgumentException("Unknown ViewModel class: " + modelClass.getName());
+        try {
+            return (T) creator.get();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 }

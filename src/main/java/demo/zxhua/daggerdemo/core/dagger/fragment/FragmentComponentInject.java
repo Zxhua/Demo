@@ -1,15 +1,18 @@
 package demo.zxhua.daggerdemo.core.dagger.fragment;
 
-import demo.zxhua.daggerdemo.ui.login.LoginFragment;
-import demo.zxhua.daggerdemo.ui.refreshedit.EditRefreshFragment;
+
+import demo.zxhua.daggerdemo.ui.navigation.NavigationFragment;
+import demo.zxhua.daggerdemo.ui.test.TestFragment;
 
 /**
  * Created by Zxhua on 2017/9/8 0008.
  */
 
 public interface FragmentComponentInject {
-    void inject(LoginFragment loginFragment);
 
-    void inject(EditRefreshFragment editRefreshFragment);
+    void inject(DaggerFragment fragment);
 
+    void inject(NavigationFragment navigationFragment);
+
+    void inject(TestFragment testFragment);
 }
